@@ -9,7 +9,9 @@ Este material é destinado exclusivamente a estudos em ambientes controlados. Nu
 ### Arquitetura do ambiente
 
 Host (VirtualBox)
+
  ├── Kali Linux (Atacante)
+ 
  └── Metasploitable 2 (Alvo: 192.168.56.102)
 
 ### Requisitos
