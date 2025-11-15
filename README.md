@@ -134,3 +134,25 @@ Para validar, acesse com as seguintes credenciais de login: admin e senha: passw
 O protocolo **SMB** significa *Server Message Block*. É um protocolo do Windows utilizado para compartilhar arquivos, pastas, impressoras e também para realizar a autenticação de usuários e comunicação entre máquinas Windows e Linux via samba. Pode ser considerado uma porta para compartilhar recursos da rede interna.
 
 Vamos supor que você descobriu em uma rede um smb ativo. O próximo passo, é **descobrir os usuários existentes no sistema** e **testar senhas fracas** em todos eles discretamente, sem bloquear nenhuma conta.
+
+O **Password Spraying** é uma *técnica furtiva de ataque às senhas*. Ao invés de tentar muitas senhas para um único usuário, o que leva ao bloqueio de tentativas, a gente vai testar **uma senha comum para muitos usuários diferentes**.
+
+Para isso, utile o seguinte comando:
+
+```bash
+enum4linux -a 192.168.56.102 | tee enum4_output.txt
+```
+
+Explicando os parâmetros:
+- `enum4linux`: ferramenta principal para enumeração.
+- `-a`: vai ativar todas as técnicas possíveis para enumeração.
+- `192.168.56.102`: ip do alvo.
+- `tee enum4_output.txt`: gravar a saída do comando em um arquivo.
+
+Depois ler o conteúdo com o seguinte comando:
+
+```bash
+less enum4_output.txt
+```
+
+Ele vai criar uma lista com possíveis alvos:
