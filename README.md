@@ -191,3 +191,11 @@ Explicando os parâmetros:
 - `-t 2`: uma das duas tags simultâneas, ou seja, vai simular dois usuários testando senhas.
 - `-T 50`: significa até 50 hosts em paralelo.
 
+Esse ataque vai fazer no total 3 usuários por 4 senhas, ou seja, 12 tentativas de login, com um delay de 5 segundos entre tentativas.
+
+Vai aparecer algo assim:
+
+![Varredura Medusa](./images/05_varredura_medusa.png)
+
+
+
