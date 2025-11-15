@@ -15,9 +15,9 @@ Simulação de Ataque de Força Bruta, utilizando a ferramenta Medusa no Kali Li
 
 - Password Spraying e Credential Stuffing
 
-### Etapas
+### Ataque de Enumeração
 
-**1. Enumeração**
+**1. Varredura com Nmap**
 
 A primeira parte desta simulação é a enumeração, que consiste em descobrir quais serviços estão disponíveis no sistema alvo. Para isso é utilizado o comando **nmap**, que vai escanear as portas dos principais protocolos de rede como FTP, SSH, HTTP, HTTPS e SMB. O parâmetro **-sV** serve para identificar a versão do serviço que está rodando em cada porta:
 
@@ -54,7 +54,7 @@ Comando para criar lista de **senhas**:
 echo -e “123456\npassword\nqwerty\nmsfadmin” > pass.txt
 ```
 
-**3. Efetuando o ataque**
+**3. Efetuando o ataque com Medusa**
 
 Criada as wordlists, agora é hora de executar o **Medusa**, que vai simular combinações entre usuários e senhas. O comando é:
 
@@ -69,8 +69,36 @@ Explicando os parâmetros:
 - `-M ftp`: define o módulo (protocolo/serviço) que será atacado. Aqui, o ataque é contra o serviço FTP.
 - `-t 6`: define o número de threads simultâneas. Em outras palavras: quantas tentativas paralelas o Medusa fará ao mesmo tempo.
 
-Após executar o comando procurar onde ele teve “sucesso” na investida, bem como as combinações de usuário e senha:
+Após executar o comando procurar onde ele teve “**SUCCESS**” na investida, bem como as combinações de usuário e senha, conforme mostra a imagem abaixo:
 
 ![Varredura Medusa](./images/02_varredura_medusa.png)
 
-TESTE
+Se tentar acessar agora a VM Metasploitable via protocolo FTP, e inserir as credenciais em que o Medusa obteve sucesso, vai obter êxito no ataque.
+
+```bash
+ftp 192.168.56.102
+```
+
+### Ataques de força bruta aplicados em formulários de login em sistemas web
+
+Para testar essa ferramenta, utilizaremos um formulário web do próprio metasploitable para teste acessando da seguinte maneira:
+
+```bash
+http://192.168.56.102/dvwa/login.php
+```
+
+**1. Criação de Wordlist**
+
+Comando para criar lista de **usuários**:
+
+```bash
+echo -e “user\nmsfadmin\nadmin\nroot” > users.txt
+```
+
+Comando para criar lista de **senhas**:
+
+```bash
+echo -e “123456\npassword\nqwerty\nmsfadmin” > pass.txt
+```
+
+
