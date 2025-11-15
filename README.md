@@ -69,4 +69,8 @@ Explicando os parâmetros:
 - `-M ftp`: define o módulo (protocolo/serviço) que será atacado. Aqui, o ataque é contra o serviço FTP.
 - `-t 6`: define o número de threads simultâneas. Em outras palavras: quantas tentativas paralelas o Medusa fará ao mesmo tempo.
 
+Após executar o comando procurar onde ele teve “sucesso” na investida, bem como as combinações de usuário e senha:
+
+
+
 
