@@ -23,6 +23,12 @@ A primeira parte desta simulação é a enumeração, que consiste em descobrir 
 
 nmap -sV -p 21,22,80,445,139 192.168.56.102
 
+`nmap -sV -p 21,22,80,445,139 192.168.56.102`
+
+```bash
+nmap -sV -p 21,22,80,445,139 192.168.56.102
+```
+
 Este comando vai mostrar qual o estado das portas como "**open**".
 
 ![Varredura Nmap](./images/01_varredura_nmap.png)
