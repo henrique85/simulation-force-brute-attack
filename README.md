@@ -44,16 +44,29 @@ Conforme a imagem anterior, sabemos que o serviço está aberto mas não temos c
 
 Comando para criar lista de **usuários**:
 
+```bash
 echo -e “user\nmsfadmin\nadmin\nroot” > users.txt
+```
 
 Comando para criar lista de **senhas**:
 
+```bash
 echo -e “123456\npassword\nqwerty\nmsfadmin” > pass.txt
+```
 
+**3. Efetuando o ataque**
 
+Criada as wordlists, agora é hora de executar o **Medusa**, que vai simular combinações entre usuários e senhas. O comando é:
 
+```bash
+medusa -h 192.168.56.102 -U users.txt -P pass.txt -M ftp -t 6
+```
 
-
-
+Explicando os parâmetros:
+- `-h 192.168.56.102`: define o host alvo. É o endereço IP da máquina que você quer testar.
+- `-U users.txt`: informa o arquivo que contém a lista de usuários que serão testados.
+- `-P pass.txt`: informa o arquivo que contém a lista de senhas que serão testadas.
+- `-M ftp`: define o módulo (protocolo/serviço) que será atacado. Aqui, o ataque é contra o serviço FTP.
+- `-t 6`: define o número de threads simultâneas. Em outras palavras: quantas tentativas paralelas o Medusa fará ao mesmo tempo.
 
 
