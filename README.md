@@ -230,9 +230,9 @@ Quando acessa, vemos uma lista de compartilhamento.
 - Password Spraying (baixa taxa de bloqueio).
 - Importância de senhas fortes.
 
-  ### Possíveis Próximos Passos
+### Possíveis Próximos Passos
 
- - Capturar tráfego do ataque usando Wireshark.
- - Usar Hydra como comparação.
- - Configurar bloqueios e proteções.
- - Implementar log analysis após o ataque.
+- Capturar tráfego do ataque usando Wireshark.
+- Usar Hydra como comparação.
+- Configurar bloqueios e proteções.
+- Implementar log analysis após o ataque.
