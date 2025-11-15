@@ -6,7 +6,10 @@ Simulação de Ataque de Força Bruta, utilizando a ferramenta Medusa no Kali Li
 - VM Kali Linux (link para download [aqui](https://www.kali.org/get-kali/#kali-virtual-machines)).
 - VM Metasploitable (link para download [aqui](https://sourceforge.net/projects/metasploitable/files/)).
 
-### Procedimentos iniciais
+### ⚠️ Observações
 
-- Criar um diretório:<br>
-mkdir /home/<seu usuário>/script
+Credenciais padrão:
+- Kali Linux: usuário **kali**, senha **kali**
+- Metasploitable: usuário **msfadmin**, senha **msfadmin**
+
+
