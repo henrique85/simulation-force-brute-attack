@@ -125,3 +125,7 @@ Explicando os parâmetros:
 
 Onde está “**SUCCESS**” ele encontrou credenciais válidas:
 
+![Varredura Medusa](./images/03_varredura_medusa.png)
+
+Para validar, acesse com as seguintes credenciais de login: admin e senha: password.
+
